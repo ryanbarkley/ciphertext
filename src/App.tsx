@@ -1,7 +1,7 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { blue, pink, blueGrey } from "@material-ui/core/colors";
+import { purple, pink, blueGrey } from "@material-ui/core/colors";
 import Box from "@material-ui/core/Box";
 import TextEncodingForm from "./TextEncodingForm";
 import AppMeta from "./AppMeta";
@@ -10,7 +10,7 @@ import AppFooter from "./AppFooter";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: blue[500],
+      main: purple[800],
     },
     secondary: {
       main: pink[500],
