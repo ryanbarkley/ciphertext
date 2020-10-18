@@ -50,7 +50,7 @@ function TextEncodingForm() {
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <Box display="flex">
-          <Box>
+          <Box display="flex">
             <TextField
               id="algorithim-selection"
               label="Algorithm"
@@ -58,6 +58,7 @@ function TextEncodingForm() {
               select
               variant="filled"
               onChange={handleSelectedAlgorithmChange}
+              color="primary"
             >
               {/* <ListSubheader>Basic Encoding</ListSubheader> */}
               <MenuItem value={"base64"}>Base 64</MenuItem>
@@ -68,7 +69,7 @@ function TextEncodingForm() {
               {/* <ListSubheader>Classical Ciphers</ListSubheader> */}
             </TextField>
           </Box>
-          <Box marginLeft={3}>
+          <Box marginLeft={3} display="flex">
             <ToggleButtonGroup
               value={algorithmMode}
               exclusive
