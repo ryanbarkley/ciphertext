@@ -63,7 +63,7 @@ function TextEncodingForm() {
               {/* <ListSubheader>Basic Encoding</ListSubheader> */}
               <MenuItem value={"base64"}>Base 64</MenuItem>
               <MenuItem value={"hex"}>Hexadecimal</MenuItem>
-              {/* <MenuItem value={"octal"}>Octal</MenuItem> */}
+              <MenuItem value={"octal"}>Octal</MenuItem>
               {/* <MenuItem value={"binary"}>Binary</MenuItem> */}
               {/* <MenuItem value={"ascii"}>Ascii</MenuItem> */}
               {/* <ListSubheader>Classical Ciphers</ListSubheader> */}

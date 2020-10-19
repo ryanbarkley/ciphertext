@@ -20,6 +20,16 @@ const Algorithms = {
     encode: (text: string) => Buffer.from(text, "ascii").toString("hex"),
     decode: (text: string) => Buffer.from(text, "hex").toString("ascii"),
   } as Algorithm,
+  octal: {
+    encode: (text: string) =>
+      Array.from(Buffer.from(text, "ascii"))
+        .map((b) => b.toString(8).padStart(3, "0"))
+        .join(" "),
+    decode: (text: string) =>
+      Buffer.from(text.split(" ").map((b) => Number.parseInt(b, 8))).toString(
+        "ascii"
+      ),
+  } as Algorithm,
 };
 
 export const AlgorithmNames = Object.keys(Algorithms);
