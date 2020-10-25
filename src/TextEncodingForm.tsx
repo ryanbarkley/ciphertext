@@ -97,7 +97,7 @@ function TextEncodingForm() {
       <Grid item xs={12} sm={6}>
         <TextField
           fullWidth
-          label="Source text"
+          label="Source message"
           multiline
           variant="filled"
           value={sourceText}
@@ -107,7 +107,9 @@ function TextEncodingForm() {
       <Grid item xs={12} sm={6}>
         <TextField
           fullWidth
-          label="Encoded text"
+          label={
+            algorithmMode === "encode" ? "Encoded message" : "Decoded message"
+          }
           multiline
           variant="filled"
           value={transformText(sourceText, selectedAlgorithm, algorithmMode)}

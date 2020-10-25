@@ -10,7 +10,7 @@ function AppMeta(props: BoxProps) {
         Encode and decode text using common algorithms and substitution ciphers.
       </Typography>
       <Typography>
-        Select an algorithm below to encode or decode source text.
+        Select an algorithm below to encode or decode messages.
       </Typography>
     </Box>
   );
