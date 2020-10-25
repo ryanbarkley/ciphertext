@@ -64,7 +64,7 @@ function TextEncodingForm() {
               <MenuItem value={"base64"}>Base 64</MenuItem>
               <MenuItem value={"hex"}>Hexadecimal</MenuItem>
               <MenuItem value={"octal"}>Octal</MenuItem>
-              <ListSubheader>Classical Ciphers</ListSubheader>
+              <ListSubheader>Substitution Ciphers</ListSubheader>
               <MenuItem value={"caesar"}>Caesar</MenuItem>
               <MenuItem value={"rot13"}>ROT13</MenuItem>
             </TextField>

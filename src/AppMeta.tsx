@@ -7,7 +7,7 @@ function AppMeta(props: BoxProps) {
     <Box {...props}>
       <Typography style={{ fontSize: 32 }}>Cryptogram</Typography>
       <Typography>
-        Encode and decode text using common algorithms and classical ciphers.
+        Encode and decode text using common algorithms and substitution ciphers.
       </Typography>
       <Typography>
         Select an algorithm below to encode or decode source text.
