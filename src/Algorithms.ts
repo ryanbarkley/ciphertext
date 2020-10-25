@@ -1,3 +1,5 @@
+import SubstitutionCipher from "./ciphers/Substitution";
+
 export const AlgorithmModes = ["encode", "decode"];
 export type AlgorithmMode = "encode" | "decode";
 export const isSupportedAlgorithmMode = (name: string) =>
@@ -29,6 +31,14 @@ const Algorithms = {
       Buffer.from(text.split(" ").map((b) => Number.parseInt(b, 8))).toString(
         "ascii"
       ),
+  } as Algorithm,
+  caesar: {
+    encode: (text: string) => SubstitutionCipher(23).encode(text),
+    decode: (text: string) => SubstitutionCipher(23).decode(text),
+  } as Algorithm,
+  rot13: {
+    encode: (text: string) => SubstitutionCipher(13).encode(text),
+    decode: (text: string) => SubstitutionCipher(13).decode(text),
   } as Algorithm,
 };
 

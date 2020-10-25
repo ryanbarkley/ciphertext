@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-// import ListSubheader from "@material-ui/core/ListSubheader";
+import ListSubheader from "@material-ui/core/ListSubheader";
 import MenuItem from "@material-ui/core/MenuItem";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
@@ -60,13 +60,13 @@ function TextEncodingForm() {
               onChange={handleSelectedAlgorithmChange}
               color="primary"
             >
-              {/* <ListSubheader>Basic Encoding</ListSubheader> */}
+              <ListSubheader>Basic Encoding</ListSubheader>
               <MenuItem value={"base64"}>Base 64</MenuItem>
               <MenuItem value={"hex"}>Hexadecimal</MenuItem>
               <MenuItem value={"octal"}>Octal</MenuItem>
-              {/* <MenuItem value={"binary"}>Binary</MenuItem> */}
-              {/* <MenuItem value={"ascii"}>Ascii</MenuItem> */}
-              {/* <ListSubheader>Classical Ciphers</ListSubheader> */}
+              <ListSubheader>Classical Ciphers</ListSubheader>
+              <MenuItem value={"caesar"}>Caesar</MenuItem>
+              <MenuItem value={"rot13"}>ROT13</MenuItem>
             </TextField>
           </Box>
           <Box marginLeft={3} display="flex">
