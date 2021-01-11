@@ -1,9 +1,12 @@
+import "jest-axe/extend-expect";
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { within } from "@testing-library/dom";
-import TextEncodingForm from "./TextEncodingForm";
+import { axe } from "jest-axe";
 import faker from "faker";
+
+import TextEncodingForm from "./TextEncodingForm";
 import { transformText } from "./Algorithms";
 
 function renderEncodingForm() {
@@ -22,6 +25,12 @@ test("renders a text encoding form", () => {
   expect(getByRole("group", { name: "Algorithim Mode" })).toBeInTheDocument();
   expect(getByLabelText(/source message/i)).toBeInTheDocument();
   expect(getByLabelText(/encoded message/i)).toBeInTheDocument();
+});
+
+test("follows basic accessibility best practices", async () => {
+  const { container } = renderEncodingForm();
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
 });
 
 test("automatically transforms the source message when entered", () => {
