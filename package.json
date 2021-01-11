@@ -25,8 +25,8 @@
     "eject": "react-scripts eject",
     "check:types": "tsc --noEmit",
     "check:lint": "eslint **/*.{js,jsx,ts,tsx}",
-    "check:style": "prettier --check .",
-    "fix:style": "prettier --write ."
+    "check:style": "prettier --ignore-path ./gitignore --check .",
+    "fix:style": "prettier --ignore-path ./gitignore --write ."
   },
   "eslintConfig": {
     "extends": "react-app"
