@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        run: yarn install --dev
+        run: yarn install
       - name: Check types
         run: yarn check:types
       - name: Check lint
@@ -21,6 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        run: yarn install --dev
+        run: yarn install
       - name: Run tests
         run: yarn test:ci
