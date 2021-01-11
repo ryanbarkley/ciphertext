@@ -57,16 +57,34 @@
   "jest": {
     "coverageThreshold": {
       "global": {
-        "statements": 45,
-        "branches": 8,
-        "functions": 55,
-        "lines": 45
+        "statements": 100,
+        "branches": 60,
+        "functions": 100,
+        "lines": 100
       },
       "./src/ciphers/**.{ts,tsx}": {
         "statements": 100,
         "branches": 100,
         "functions": 100,
         "lines": 100
+      },
+      "./src/Algorithms.ts": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      },
+      "./src/index.ts": {
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
+      },
+      "./src/serviceWorker.ts": {
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
       }
     }
   }
