@@ -18,7 +18,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci": "yarn test --coverage --watchAll=false",
+    "test:ci": "yarn test --coverage --watchAll=false && yarn test:e2e",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cypress:run",
+    "cypress:open": "yarn cypress open",
+    "cypress:run": "yarn cypress run",
     "eject": "react-scripts eject",
     "check:types": "tsc --noEmit",
     "check:lint": "eslint **/*.{js,jsx,ts,tsx}",
@@ -41,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.3",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
@@ -50,9 +54,12 @@
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "cypress": "^6.2.1",
+    "eslint-plugin-cypress": "^2.11.2",
     "faker": "^5.1.0",
     "jest-axe": "^4.1.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "start-server-and-test": "^1.11.7"
   },
   "jest": {
     "coverageThreshold": {
