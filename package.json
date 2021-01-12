@@ -94,13 +94,7 @@
         "functions": 100,
         "lines": 100
       },
-      "./src/index.ts": {
-        "statements": 0,
-        "branches": 0,
-        "functions": 0,
-        "lines": 0
-      },
-      "./src/serviceWorker.ts": {
+      "./src/{index,reportWebVitals,service-worker,serviceWorkerRegistration}.{ts,tsx}": {
         "statements": 0,
         "branches": 0,
         "functions": 0,
