@@ -59,7 +59,20 @@
     "faker": "^5.1.0",
     "jest-axe": "^4.1.0",
     "prettier": "^2.2.1",
-    "start-server-and-test": "^1.11.7"
+    "start-server-and-test": "^1.11.7",
+    "web-vitals": "^1.0.1",
+    "workbox-background-sync": "^6.0.2",
+    "workbox-broadcast-update": "^6.0.2",
+    "workbox-cacheable-response": "^6.0.2",
+    "workbox-core": "^6.0.2",
+    "workbox-expiration": "^6.0.2",
+    "workbox-google-analytics": "^6.0.2",
+    "workbox-navigation-preload": "^6.0.2",
+    "workbox-precaching": "^6.0.2",
+    "workbox-range-requests": "^6.0.2",
+    "workbox-routing": "^6.0.2",
+    "workbox-strategies": "^6.0.2",
+    "workbox-streams": "^6.0.2"
   },
   "jest": {
     "coverageThreshold": {
