@@ -18,10 +18,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:ci": "yarn test --coverage --watchAll=false && yarn test:e2e",
+    "test:ci": "yarn test:coverage && yarn test:e2e && yarn test:lhci",
+    "test:coverage": "yarn test --coverage --watchAll=false",
     "test:e2e": "cross-env BROWSER=none start-server-and-test start http://localhost:3000 cypress:run",
-    "cypress:open": "yarn cypress open",
-    "cypress:run": "yarn cypress run",
+    "test:lhci": "yarn build && lhci autorun",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "eject": "react-scripts eject",
     "check:types": "tsc --noEmit",
     "check:lint": "eslint **/*.{js,jsx,ts,tsx}",
@@ -44,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@lhci/cli": "^0.6.1",
     "@testing-library/cypress": "^7.0.3",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
