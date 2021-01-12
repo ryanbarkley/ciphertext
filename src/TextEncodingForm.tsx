@@ -15,9 +15,10 @@ import {
 } from "./Algorithms";
 
 function TextEncodingForm() {
-  const [selectedAlgorithm, setSelectedAlgorithm] = React.useState<
-    AlgorithmName
-  >("base64");
+  const [
+    selectedAlgorithm,
+    setSelectedAlgorithm,
+  ] = React.useState<AlgorithmName>("base64");
   const handleSelectedAlgorithmChange = (
     event: React.ChangeEvent<{ value: string }>
   ) => {
@@ -96,6 +97,7 @@ function TextEncodingForm() {
       </Grid>
       <Grid item xs={12} sm={6}>
         <TextField
+          id="source-text"
           fullWidth
           label="Source message"
           multiline
@@ -106,6 +108,7 @@ function TextEncodingForm() {
       </Grid>
       <Grid item xs={12} sm={6}>
         <TextField
+          id="transformed-text"
           fullWidth
           label={
             algorithmMode === "encode" ? "Encoded message" : "Decoded message"
