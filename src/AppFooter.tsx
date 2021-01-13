@@ -3,8 +3,17 @@ import Box, { BoxProps } from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import GitHubIcon from "@material-ui/icons/GitHub";
+import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import { usePreferences } from "./PreferencesContext";
 
 function AppFooter(props: BoxProps) {
+  const [preferences, dispatch] = usePreferences();
+  const toggleDarkMode = () =>
+    dispatch({
+      type: "toggleDarkMode",
+    });
+
   return (
     <Box {...props}>
       <Typography>
@@ -18,7 +27,7 @@ function AppFooter(props: BoxProps) {
           @ryanbarkley
         </Link>
       </Typography>
-      <Box>
+      <Box display="flex">
         <Link
           href="https://github.com/ryanbarkley/cryptogram"
           target="_blank"
@@ -26,6 +35,20 @@ function AppFooter(props: BoxProps) {
           title="GitHub repo"
         >
           <GitHubIcon aria-label="GitHub repo" />
+        </Link>
+        <Link
+          component="button"
+          title="Toggle dark mode"
+          onClick={toggleDarkMode}
+          style={{
+            marginLeft: ".75em",
+          }}
+        >
+          {preferences.darkModeEnabled ? (
+            <BrightnessHighIcon aria-label="light mode" />
+          ) : (
+            <Brightness4Icon aria-label="dark mode" />
+          )}
         </Link>
       </Box>
     </Box>
