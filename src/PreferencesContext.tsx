@@ -11,9 +11,6 @@ type PreferencesAction =
   | {
       type: "enableDarkMode";
     };
-const defaultState = {
-  darkModeEnabled: false,
-};
 
 function preferencesReducer(
   state: PreferencesState,
@@ -29,9 +26,14 @@ function preferencesReducer(
   }
 }
 
-const PreferencesContext = createContext<
-  [PreferencesState, React.Dispatch<any>]
->([defaultState, () => null]);
+type PreferencesContextType = {
+  state?: PreferencesState;
+  dispatch: React.Dispatch<PreferencesAction>;
+};
+const PreferencesContext = createContext<PreferencesContextType>({
+  state: undefined,
+  dispatch: () => null,
+});
 
 export function PreferencesProvider({
   children,
@@ -40,7 +42,6 @@ export function PreferencesProvider({
 }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark");
   const initialState: PreferencesState = {
-    ...defaultState,
     darkModeEnabled: prefersDarkMode,
   };
   const [state, dispatch] = useReducer(preferencesReducer, initialState);
@@ -50,7 +51,7 @@ export function PreferencesProvider({
   }, [prefersDarkMode]);
 
   return (
-    <PreferencesContext.Provider value={[state, dispatch]}>
+    <PreferencesContext.Provider value={{ state, dispatch }}>
       {children}
     </PreferencesContext.Provider>
   );
@@ -58,10 +59,10 @@ export function PreferencesProvider({
 
 export function usePreferences() {
   const context = useContext(PreferencesContext);
-  if (context === undefined) {
+  if (context.state === undefined) {
     throw new Error(
       "usePreferences must be used within a PreferencesProvider."
     );
   }
-  return context;
+  return context as Required<PreferencesContextType>;
 }

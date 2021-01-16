@@ -8,7 +8,7 @@ export default function PreferredThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [preferences] = usePreferences();
+  const { state: preferences } = usePreferences();
   const themeOptions = preferences.darkModeEnabled ? darkTheme : lightTheme;
   const theme = createMuiTheme(themeOptions);
 

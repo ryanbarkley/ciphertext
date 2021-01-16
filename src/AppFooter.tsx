@@ -8,7 +8,7 @@ import Brightness4Icon from "@material-ui/icons/Brightness4";
 import { usePreferences } from "./PreferencesContext";
 
 function AppFooter(props: BoxProps) {
-  const [preferences, dispatch] = usePreferences();
+  const { state: preferences, dispatch } = usePreferences();
   const toggleDarkMode = () =>
     dispatch({
       type: "toggleDarkMode",
