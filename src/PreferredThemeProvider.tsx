@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { lightTheme, darkTheme } from "./themes";
+import Themes from "./themes";
 import { usePreferences } from "./PreferencesContext";
 
 export default function PreferredThemeProvider({
@@ -9,8 +9,7 @@ export default function PreferredThemeProvider({
   children: React.ReactNode;
 }) {
   const { state: preferences } = usePreferences();
-  const themeOptions = preferences.darkModeEnabled ? darkTheme : lightTheme;
-  const theme = createMuiTheme(themeOptions);
+  const theme = createMuiTheme(Themes[preferences.themeStyle]);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }

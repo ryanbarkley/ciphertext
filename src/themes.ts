@@ -2,7 +2,7 @@ import { ThemeOptions } from "@material-ui/core/styles";
 import type {} from "@material-ui/lab/themeAugmentation";
 import { purple, pink, blueGrey } from "@material-ui/core/colors";
 
-export const lightTheme: ThemeOptions = {
+const light: ThemeOptions = {
   palette: {
     type: "light",
     primary: {
@@ -34,7 +34,7 @@ export const lightTheme: ThemeOptions = {
   },
 };
 
-export const darkTheme: ThemeOptions = {
+const dark: ThemeOptions = {
   palette: {
     type: "dark",
     primary: {
@@ -57,3 +57,7 @@ export const darkTheme: ThemeOptions = {
     },
   },
 };
+
+const themes = { light, dark };
+
+export default themes;

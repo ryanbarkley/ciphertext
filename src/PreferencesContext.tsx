@@ -1,38 +1,45 @@
 import React, { useContext, useReducer, createContext, useEffect } from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+type ThemeStyle = "light" | "dark";
 type PreferencesState = {
-  darkModeEnabled: boolean;
+  themeStyle: ThemeStyle;
 };
 type PreferencesAction =
   | {
-      type: "toggleDarkMode";
+      type: "toggleThemeStyle";
     }
   | {
-      type: "enableDarkMode";
+      type: "setThemeStyle";
+      data: {
+        themeStyle: ThemeStyle;
+      };
     };
 
 function preferencesReducer(
   state: PreferencesState,
   action: PreferencesAction
-) {
+): PreferencesState {
   switch (action.type) {
-    case "toggleDarkMode": {
-      return { ...state, darkModeEnabled: !state.darkModeEnabled };
+    case "toggleThemeStyle": {
+      return {
+        ...state,
+        themeStyle: state.themeStyle === "light" ? "dark" : "light",
+      };
     }
-    case "enableDarkMode": {
-      return { ...state, darkModeEnabled: true };
+    case "setThemeStyle": {
+      return { ...state, themeStyle: action.data.themeStyle };
     }
   }
 }
 
 type PreferencesContextType = {
   state?: PreferencesState;
-  dispatch: React.Dispatch<PreferencesAction>;
+  dispatch?: React.Dispatch<PreferencesAction>;
 };
 const PreferencesContext = createContext<PreferencesContextType>({
   state: undefined,
-  dispatch: () => null,
+  dispatch: undefined,
 });
 
 export function PreferencesProvider({
@@ -40,14 +47,15 @@ export function PreferencesProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark");
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const initialState: PreferencesState = {
-    darkModeEnabled: prefersDarkMode,
+    themeStyle: "light",
   };
   const [state, dispatch] = useReducer(preferencesReducer, initialState);
 
   useEffect(() => {
-    if (prefersDarkMode) dispatch({ type: "enableDarkMode" });
+    if (prefersDarkMode)
+      dispatch({ type: "setThemeStyle", data: { themeStyle: "dark" } });
   }, [prefersDarkMode]);
 
   return (

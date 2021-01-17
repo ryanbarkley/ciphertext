@@ -9,9 +9,9 @@ import { usePreferences } from "./PreferencesContext";
 
 function AppFooter(props: BoxProps) {
   const { state: preferences, dispatch } = usePreferences();
-  const toggleDarkMode = () =>
+  const toggleThemeStyle = () =>
     dispatch({
-      type: "toggleDarkMode",
+      type: "toggleThemeStyle",
     });
 
   return (
@@ -38,13 +38,13 @@ function AppFooter(props: BoxProps) {
         </Link>
         <Link
           component="button"
-          title="Toggle dark mode"
-          onClick={toggleDarkMode}
+          title="Toggle theme style"
+          onClick={toggleThemeStyle}
           style={{
             marginLeft: ".75em",
           }}
         >
-          {preferences.darkModeEnabled ? (
+          {preferences.themeStyle === "light" ? (
             <BrightnessHighIcon aria-label="light mode" />
           ) : (
             <Brightness4Icon aria-label="dark mode" />
