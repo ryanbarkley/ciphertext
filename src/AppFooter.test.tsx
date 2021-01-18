@@ -10,22 +10,22 @@ const Wrapper: React.ComponentType = ({ children }) => {
 };
 
 test("renders a Twitter profile link", () => {
-  const { getByText } = render(<AppFooter />, { wrapper: Wrapper });
-  const linkElement = getByText(/@ryanbarkley/i);
+  const { getByRole } = render(<AppFooter />, { wrapper: Wrapper });
+  const linkElement = getByRole("link", { name: /@ryanbarkley/i });
   expect(linkElement).toBeInTheDocument();
 });
 
 test("renders a GitHub project link", () => {
-  const { getByLabelText } = render(<AppFooter />, { wrapper: Wrapper });
-  const linkElement = getByLabelText(/GitHub repo/i);
+  const { getByRole } = render(<AppFooter />, { wrapper: Wrapper });
+  const linkElement = getByRole("link", { name: /GitHub repo/i });
   expect(linkElement).toBeInTheDocument();
 });
 
 test("renders a theme style toggle button", async () => {
   const { result } = renderHook(usePreferences, { wrapper: Wrapper });
   const initialThemeStyle = result.current.state.themeStyle;
-  const { getByTitle } = render(<AppFooter />, { wrapper: Wrapper });
-  const buttonElement = getByTitle(/toggle theme style/i);
+  const { getByRole } = render(<AppFooter />, { wrapper: Wrapper });
+  const buttonElement = getByRole("button", { name: /toggle theme style/i });
 
   expect(buttonElement).toBeInTheDocument();
   userEvent.click(buttonElement);
