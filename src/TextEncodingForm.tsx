@@ -6,7 +6,10 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import MenuItem from "@material-ui/core/MenuItem";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import {
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
+import { Link as RouterLink } from "react-router-dom";
+import Algorithms, {
   transformText,
   AlgorithmMode,
   isSupportedAlgorithmMode,
@@ -51,10 +54,19 @@ function TextEncodingForm(props: BoxProps) {
     <Box display="flex" {...props}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
+          <Typography>
+            Select an algorithm below to encode or decode messages or{" "}
+            <Link component={RouterLink} to={"/supported-algorithms"}>
+              learn more about the supported algorithms
+            </Link>
+            .
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
           <Box display="flex">
             <Box display="flex">
               <TextField
-                id="algorithim-selection"
+                id="algorithm-selection"
                 label="Algorithm"
                 value={selectedAlgorithm}
                 select
@@ -63,19 +75,36 @@ function TextEncodingForm(props: BoxProps) {
                 color="primary"
               >
                 <ListSubheader>Basic Encoding</ListSubheader>
-                <MenuItem value={"base64"}>Base 64</MenuItem>
-                <MenuItem value={"hex"}>Hexadecimal</MenuItem>
-                <MenuItem value={"octal"}>Octal</MenuItem>
+                {Object.keys(Algorithms)
+                  .filter(
+                    (name) =>
+                      Algorithms[name as AlgorithmName].type ===
+                      "basic-encoding"
+                  )
+                  .map((name) => (
+                    <MenuItem key={name} value={name}>
+                      {Algorithms[name as AlgorithmName].title}
+                    </MenuItem>
+                  ))}
                 <ListSubheader>Substitution Ciphers</ListSubheader>
-                <MenuItem value={"caesar"}>Caesar</MenuItem>
-                <MenuItem value={"rot13"}>ROT13</MenuItem>
+                {Object.keys(Algorithms)
+                  .filter(
+                    (name) =>
+                      Algorithms[name as AlgorithmName].type ===
+                      "substitution-cipher"
+                  )
+                  .map((name) => (
+                    <MenuItem key={name} value={name}>
+                      {Algorithms[name as AlgorithmName].title}
+                    </MenuItem>
+                  ))}
               </TextField>
             </Box>
             <Box marginLeft={3} display="flex">
               <ToggleButtonGroup
                 value={algorithmMode}
                 exclusive
-                aria-label="Algorithim Mode"
+                aria-label="Algorithm Mode"
                 onChange={handleAlgorithmModeChange}
               >
                 <ToggleButton value="encode" aria-label="encode source text">
@@ -88,7 +117,7 @@ function TextEncodingForm(props: BoxProps) {
             </Box>
             {/* <Box marginLeft={3}>
             <TextField
-              id="algorithim-key"
+              id="algorithm-key"
               label="Key"
               placeholder="example"
               variant="filled"
