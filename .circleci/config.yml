@@ -1,0 +1,86 @@
+version: 2.1
+
+orbs:
+  browser-tools: circleci/browser-tools@1.2.3
+  cypress: cypress-io/cypress@1.29.0
+
+jobs:
+  dependencies:
+    docker:
+      - image: cimg/node:16.13.1
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          key: dependencies-v1-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+  unit-tests:
+    docker:
+      - image: cimg/node:16.13.1
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Run unit tests
+          command: yarn test:ci
+      - store_test_results:
+          path: ./junit.xml
+  a11y-check:
+    docker:
+      - image: cimg/node:16.13.1-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependencies-v1-{{ checksum "yarn.lock" }}
+      - browser-tools/install-chrome
+      - run:
+          name: Run integration tests
+          command: yarn test:lighthouse
+  fitness-functions:
+    docker:
+      - image: cimg/node:16.13.1
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependencies-v1-{{ checksum "yarn.lock" }}
+      - run:
+          name: Check types
+          command: yarn check:types
+      - run:
+          name: Check lint
+          command: yarn check:lint
+      - run:
+          name: Check style
+          command: yarn check:style
+
+workflows:
+  quality-gate:
+    jobs:
+      - dependencies
+      - unit-tests:
+          requires:
+            - dependencies
+      - cypress/run:
+          requires:
+            - dependencies
+          start: yarn start http://localhost:3000
+          wait-on: http://localhost:3000
+          yarn: true
+          no-workspace: true
+          post-steps:
+            - store_test_results:
+                path: ./cypress/results.xml
+            - store_artifacts:
+                path: ./cypress/videos
+      - a11y-check:
+          requires:
+            - dependencies
+      - fitness-functions:
+          requires:
+            - dependencies
