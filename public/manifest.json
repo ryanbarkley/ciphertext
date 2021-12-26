@@ -1,6 +1,6 @@
 {
-  "short_name": "Cryptogram",
-  "name": "Cryptogram",
+  "short_name": "CipherText",
+  "name": "CipherText",
   "icons": [],
   "start_url": ".",
   "display": "standalone",

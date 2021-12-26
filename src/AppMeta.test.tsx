@@ -9,6 +9,6 @@ const Wrapper: React.ComponentType = ({ children }) => {
 
 test("renders the app title as a link", () => {
   const { getByRole } = render(<AppMeta />, { wrapper: Wrapper });
-  const linkElement = getByRole("link", { name: /Cryptogram/i });
+  const linkElement = getByRole("link", { name: /CipherText/i });
   expect(linkElement).toBeInTheDocument();
 });
