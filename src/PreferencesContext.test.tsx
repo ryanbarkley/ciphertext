@@ -57,18 +57,18 @@ test("allows theme mode to be set to a specific value", () => {
 });
 
 describe("sets the default theme mode based on system/browser preferences", () => {
-  const getMockImplementation = (preference: "light" | "dark") => (
-    query: string
-  ): MediaQueryList => ({
-    matches: query === `(prefers-color-scheme: ${preference})`,
-    media: query,
-    onchange: null,
-    addListener: () => false,
-    removeListener: () => false,
-    addEventListener: () => false,
-    removeEventListener: () => false,
-    dispatchEvent: () => false,
-  });
+  const getMockImplementation =
+    (preference: "light" | "dark") =>
+    (query: string): MediaQueryList => ({
+      matches: query === `(prefers-color-scheme: ${preference})`,
+      media: query,
+      onchange: null,
+      addListener: () => false,
+      removeListener: () => false,
+      addEventListener: () => false,
+      removeEventListener: () => false,
+      dispatchEvent: () => false,
+    });
 
   test("light theme preference", () => {
     const mockedMatchMedia = jest

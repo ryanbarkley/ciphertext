@@ -18,10 +18,8 @@ import Algorithms, {
 } from "./Algorithms";
 
 function TextEncodingForm(props: BoxProps) {
-  const [
-    selectedAlgorithm,
-    setSelectedAlgorithm,
-  ] = React.useState<AlgorithmName>("base64");
+  const [selectedAlgorithm, setSelectedAlgorithm] =
+    React.useState<AlgorithmName>("base64");
   const handleSelectedAlgorithmChange = (
     event: React.ChangeEvent<{ value: string }>
   ) => {
@@ -31,9 +29,8 @@ function TextEncodingForm(props: BoxProps) {
     }
   };
 
-  const [algorithmMode, setAlgorithmMode] = React.useState<AlgorithmMode>(
-    "encode"
-  );
+  const [algorithmMode, setAlgorithmMode] =
+    React.useState<AlgorithmMode>("encode");
   const handleAlgorithmModeChange = (
     event: React.MouseEvent<HTMLElement>,
     newMode: string
