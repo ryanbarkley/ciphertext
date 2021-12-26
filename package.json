@@ -1,9 +1,9 @@
 {
-  "name": "cryptogram",
+  "name": "ciphertext",
   "version": "0.1.0",
   "private": true,
   "repository": {
-    "url": "https://github.com/ryanbarkley/cryptogram"
+    "url": "https://github.com/ryanbarkley/ciphertext"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",

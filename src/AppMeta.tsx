@@ -9,7 +9,7 @@ function AppMeta(props: BoxProps) {
     <Box {...props}>
       <Typography variant="h3" component="h1">
         <Link component={RouterLink} to={"/"}>
-          Cryptogram
+          CipherText
         </Link>
       </Typography>
       <Typography>

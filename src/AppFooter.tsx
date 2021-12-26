@@ -29,7 +29,7 @@ function AppFooter(props: BoxProps) {
       </Typography>
       <Box display="flex">
         <Link
-          href="https://github.com/ryanbarkley/cryptogram"
+          href="https://github.com/ryanbarkley/ciphertext"
           target="_blank"
           rel="noopener noreferrer"
           title="GitHub repo"
