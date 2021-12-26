@@ -13,7 +13,8 @@
         "unused-javascript": "off",
         "legacy-javascript": "off",
         "max-potential-fid": "off",
-        "render-blocking-resources": "off"
+        "render-blocking-resources": "off",
+        "csp-xss": "off"
       }
     }
   }
